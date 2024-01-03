@@ -5,6 +5,10 @@ import { getMeal } from '@/lib/meals';
 export default function MealsSlugPage({ params }) {
   const meal = getMeal(params.slug);
   
+  if(!meal) {
+    notFound(); 
+  }
+
   meal.instructions = meal.instructions.replace(/\n/g, '<br />');
 
   return (
